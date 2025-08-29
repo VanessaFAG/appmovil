@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movil2025/utils/color_app.dart';
+import 'package:movil2025/screens/login_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,31 +15,9 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('uncanivalley/practica 1'),
-          backgroundColor: Colors.blueGrey,
-        ),
-        body: Container(
-          child: Center(
-            child: Text(
-              'Contador: $contador :b',
-              style: TextStyle(fontSize: 25, color: ColorsApp.txtColor),
-            ),
-          ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.ads_click),
-          onPressed: () {
-            contador++;
-            print(contador);
-            setState(() {
-              
-            });
-          },
-        ),
-      ),
+    return MaterialApp(//raiz widgeth
+      title: 'Marerial',
+      home: LoginScreen(),
     );
   }
 
