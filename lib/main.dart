@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movil2025/screens/home_screen.dart';
 import 'package:movil2025/screens/login_screen.dart';
 
 void main() => runApp(MyApp());
@@ -16,8 +17,12 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(//raiz widgeth
+      routes: {
+        "/home":(context) => HomeScreen() 
+      },
       title: 'Marerial',
       home: LoginScreen(),
+
     );
   }
 
