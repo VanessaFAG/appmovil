@@ -65,6 +65,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.8"
+  dot_curved_bottom_nav:
+    dependency: "direct main"
+    description:
+      name: dot_curved_bottom_nav
+      sha256: d4a06b8aa3bd7820d538b2c685300f4eaec7d1c224c077deb7c8cdd68845aae9
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.2"
   dot_navigation_bar:
     dependency: "direct main"
     description:
@@ -256,6 +264,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.6"
+  theme_button:
+    dependency: "direct main"
+    description:
+      name: theme_button
+      sha256: "28f8a93d8de33b1c1b4538e51412476b320a67783a55e1bddb267ba42eb5a12b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.4"
   typed_data:
     dependency: transitive
     description:

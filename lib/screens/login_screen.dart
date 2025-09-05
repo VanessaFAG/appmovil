@@ -27,8 +27,10 @@ class _LoginScreenState extends State<LoginScreen> {
     final txtPass = TextField(
       obscureText: true,
       controller: conPass,
-      decoration: 
+      decoration:
       InputDecoration(hintText: 'contaseña'),
+      /*style:
+      TextStyle(color: Color.fromARGB(255, 10, 15,60)),*/
     );
     return Scaffold(
       resizeToAvoidBottomInset: false,

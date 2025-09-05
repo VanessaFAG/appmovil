@@ -1,68 +1,95 @@
-import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:dot_curved_bottom_nav/dot_curved_bottom_nav.dart';
+import 'package:movil2025/utils/value_listener.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
-  
 }
 
-
 class _HomeScreenState extends State<HomeScreen> {
+  int _currentPage = 0;
+  final ScrollController _scrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
-    var _selectedTab = _SelectedTab.home;
-
-    void _handleIndexChanged(int i) {
-    setState(() {
-      _selectedTab = _SelectedTab.values[i];
-    });
-  }
-    return Scaffold(//elemento de pantalla, da una estructura
+    return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.deepPurpleAccent,
+        backgroundColor: const Color.fromARGB(255, 75, 38, 174),
+        actions: [
+          ValueListenableBuilder(
+            valueListenable: ValueListener.isLigth,
+            builder: (context, value, _) {
+              return value
+                  ? IconButton(
+                      onPressed: () {
+                        ValueListener.isLigth.value = false;
+                      },
+                      icon: Icon(Icons.nightlight),
+                    )
+                  : IconButton(
+                      onPressed: () {
+                        ValueListener.isLigth.value = true;
+                      },
+                      icon: Icon(Icons.sunny),
+                    );
+            },
+          ),
+        ],
+        title: Text("Main Menu"),
       ),
-      body: Center(child: Text("Main Menu"),),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.only(bottom: 10),
-        child: DotNavigationBar(
-          margin: EdgeInsets.only(left: 10, right: 10),
-          currentIndex: _SelectedTab.values.indexOf(_selectedTab),
-          dotIndicatorColor: Colors.white,
-          unselectedItemColor: Colors.grey[300],
-          splashBorderRadius: 50,
-          // enableFloatingNavBar: false,
-          onTap: _handleIndexChanged,
-          items: [
-            /// Home
-            DotNavigationBarItem(
-              icon: Icon(Icons.home),
-              selectedColor: Color(0xff73544C),
-            ),
-
-            /// Likes
-            DotNavigationBarItem(
-              icon: Icon(Icons.favorite),
-              selectedColor: Color(0xff73544C),
-            ),
-
-            /// Search
-            DotNavigationBarItem(
-              icon: Icon(Icons.search),
-              selectedColor: Color(0xff73544C),
-            ),
-
-            /// Profile
-            DotNavigationBarItem(
-              icon: Icon(Icons.person),
-              selectedColor: Color(0xff73544C),
-            ),
-          ],
-        ),
+      body: _currentPage == 0
+          ? const Center(child: Text("Home"))
+          : _currentPage == 1
+          ? const Center(child: Text("Favorites"))
+          : _currentPage == 2
+          ? const Center(child: Text("Search"))
+          : const Center(
+              child: Text("Profile"),
+            ), //https://pub.dev/packages/theme_button/example
+      bottomNavigationBar: DotCurvedBottomNav(
+        scrollController: _scrollController,
+        hideOnScroll: true,
+        indicatorColor: const Color.fromARGB(255, 75, 38, 174),
+        backgroundColor: Colors.black,
+        animationDuration: const Duration(milliseconds: 300),
+        animationCurve: Curves.ease,
+        selectedIndex: _currentPage,
+        indicatorSize: 5,
+        borderRadius: 25,
+        height: 70,
+        onTap: (index) {
+          setState(() => _currentPage = index);
+        },
+        items: [
+          Icon(
+            Icons.home,
+            color: _currentPage == 0
+                ? const Color.fromARGB(255, 75, 38, 174)
+                : Colors.white,
+          ),
+          Icon(
+            Icons.notifications,
+            color: _currentPage == 1
+                ? const Color.fromARGB(255, 75, 38, 174)
+                : Colors.white,
+          ),
+          Icon(
+            Icons.search,
+            color: _currentPage == 2
+                ? const Color.fromARGB(255, 75, 38, 174)
+                : Colors.white,
+          ),
+          Icon(
+            Icons.person,
+            color: _currentPage == 3
+                ? const Color.fromARGB(255, 75, 38, 174)
+                : Colors.white,
+          ),
+        ],
       ),
     );
   }
 }
-enum _SelectedTab { home, favorite, search, person }
