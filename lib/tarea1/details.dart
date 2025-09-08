@@ -50,10 +50,10 @@ class _DetailsPageState extends State<DetailsPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 22.0,
-                    vertical: 12,
+                    vertical: 5,
                   ),
                   child: Text(
-                    "Super smash bros ultimate villagers from the animal crossing series. This troops fight most effectively in large group",
+                    "Kaiju, término japonés que significa 'bestia extraña' o 'monstruo gigante'. Estos seres suelen ser representados como criaturas colosales que emergen del océano o de la tierra, causando destrucción masiva en su camino.",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,
@@ -71,7 +71,7 @@ class _DetailsPageState extends State<DetailsPage> {
                         height: 54,
                         child: OutlinedButton(
                           child: Text(
-                            'Add Favourite',
+                            'Favorito',
                             style: TextStyle(color: Colors.white, fontSize: 12),
                           ),
                           onPressed: () {},
@@ -103,7 +103,7 @@ class _DetailsPageState extends State<DetailsPage> {
                           child: Ink(
                             decoration: BoxDecoration(
                               gradient: LinearGradient(
-                                colors: [Color(0xFFF29758), Color(0xFFEF5D67)],
+                                colors: [Color.fromARGB(255, 237, 123, 197), Color.fromARGB(255, 102, 22, 102)],//cambio de color al boton del OK
                                 begin: Alignment.topCenter,
                                 end: Alignment.bottomCenter,
                               ),
@@ -146,7 +146,7 @@ class _DetailsPageState extends State<DetailsPage> {
                       },
                     ),
                     Text(
-                      'Overview',
+                      'Regresar',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
@@ -167,7 +167,7 @@ class _DetailsPageState extends State<DetailsPage> {
         ),
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFFF4E342), Color(0xFFEE3474)],
+            colors: [Color.fromARGB(255, 195, 136, 234), Color.fromARGB(255, 79, 23, 142)],
             begin: Alignment(0.3, -1),
             end: Alignment(-0.8, 1),
           ),

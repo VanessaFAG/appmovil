@@ -68,11 +68,13 @@ class RowWidget extends StatelessWidget {
                 child: Container(
                   child: Hero(
                     tag: hero.name,
-                    child: Image.asset(
-                      hero.image,
-                      width: rowHeight,
-                      height: rowHeight,
-                      // Elimina el parámetro 'package' si los assets están en tu proyecto
+                    child: Container(//si lo envuelvo en un container puedo ponerle un paddig para mover las imagenes mas centradas gg
+                      padding: EdgeInsets.only(left: 45),
+                      child: Image.asset(//aqui cambio los tamaños a unos mas equitativos
+                        hero.image,
+                        width: 160,
+                        height: 160,
+                      ),
                     ),
                   ),
                 ),

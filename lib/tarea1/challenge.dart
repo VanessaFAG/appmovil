@@ -54,7 +54,7 @@ class _ChallengeState extends State<Challenge> {
                       width: 18,
                     ),
                     Text(
-                      'Flutter4Fun.com',
+                      'Tarea 1',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
@@ -82,8 +82,8 @@ class _ChallengeState extends State<Challenge> {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color(0xffFF6958),
-              Color(0xffC358ED),
+              Color.fromARGB(255, 248, 147, 136),
+              Color.fromARGB(255, 67, 9, 9),
             ],
             begin: Alignment(0.3, -1),
             end: Alignment(-0.8, 1),

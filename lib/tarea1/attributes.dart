@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 final String heart = 'assets/tarea1/heart-alt.png';
-final String knife = 'assets/images/knife.png';
+final String knife = 'assets/tarea1/knife.png';
 
 class AttributeWidget extends StatelessWidget {
   final double size;
@@ -42,7 +42,7 @@ class AttributePainter extends CustomPainter {
     this.strokeWidth = 2.0,
     this.filledStrokeWidth = 4.0,
   })  : bgPaint = Paint()..color = Colors.white.withOpacity(0.25),
-        strokeBgPaint = Paint()..color = Color(0xffD264C9),
+        strokeBgPaint = Paint()..color = Color.fromARGB(255, 136, 200, 137),
         strokeFilledPaint = Paint()
           ..color = Colors.white
           ..style = PaintingStyle.stroke
