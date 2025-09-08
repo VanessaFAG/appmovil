@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:dot_curved_bottom_nav/dot_curved_bottom_nav.dart';
-import 'package:movil2025/utils/value_listener.dart';
+import '../utils/value_listener.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -10,85 +9,172 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _currentPage = 0;
-  final ScrollController _scrollController = ScrollController();
+  int _selectedIndex = 0;
 
+  void _onItemTapped(int index, String? nombre) {
+    setState(() {
+      _selectedIndex = index;
+    });
+
+    switch (index) {
+      case 0:
+        Navigator.pushNamed(context, '/tarea1');
+        break;
+      case 1:
+        Text("Realizar busqueda");
+        break;
+      case 2:
+        Text("Notificaciones");
+        break;
+      case 3:
+        Text("Ver perfil");
+        break;
+    }
+  }
+
+
+  Widget _buildGridButton(IconData icon, String label, int index) {//grid de los botones
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.all(16),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      ),
+      onPressed: () => _onItemTapped(index, label),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(icon, size: 40),
+          const SizedBox(height: 8),
+          Text(label, textAlign: TextAlign.center),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildIcon(//construcción de botones
+    IconData outlinedIcon,
+    IconData filledIcon,
+    int index,
+    String nombre,
+  ) {
+    bool isSelected = _selectedIndex == index;
+    return GestureDetector(
+      onTap: () => _onItemTapped(index, nombre),
+      child: Tooltip(
+        message: nombre,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
+          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          decoration: BoxDecoration(
+            color: isSelected
+                ? const Color.fromARGB(255, 189, 129, 81).withValues(alpha: 0.2)
+                : Colors.transparent,
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: AnimatedScale(
+            scale: isSelected ? 1.3 : 1.0,
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeInOut,
+            child: Icon(
+              isSelected ? filledIcon : outlinedIcon,
+              color: isSelected
+                  ? Color.fromARGB(255, 141, 124, 43)
+                  : Color.fromARGB(255, 170, 115, 60),
+              size: 28,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  // metodo principal
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 75, 38, 174),
+        title: const Text('Main'),
         actions: [
           ValueListenableBuilder(
             valueListenable: ValueListener.isLigth,
-            builder: (context, value, _) {
+            builder: (context, value, child) {
               return value
                   ? IconButton(
                       onPressed: () {
                         ValueListener.isLigth.value = false;
                       },
-                      icon: Icon(Icons.nightlight),
+                      icon: Icon(Icons.light_mode),
                     )
                   : IconButton(
                       onPressed: () {
                         ValueListener.isLigth.value = true;
                       },
-                      icon: Icon(Icons.sunny),
+                      icon: Icon(Icons.dark_mode),
                     );
             },
           ),
         ],
-        title: Text("Main Menu"),
       ),
-      body: _currentPage == 0
-          ? const Center(child: Text("Home"))
-          : _currentPage == 1
-          ? const Center(child: Text("Favorites"))
-          : _currentPage == 2
-          ? const Center(child: Text("Search"))
-          : const Center(
-              child: Text("Profile"),
-            ), //https://pub.dev/packages/theme_button/example
-      bottomNavigationBar: DotCurvedBottomNav(
-        scrollController: _scrollController,
-        hideOnScroll: true,
-        indicatorColor: const Color.fromARGB(255, 75, 38, 174),
-        backgroundColor: Colors.black,
-        animationDuration: const Duration(milliseconds: 300),
-        animationCurve: Curves.ease,
-        selectedIndex: _currentPage,
-        indicatorSize: 5,
-        borderRadius: 25,
-        height: 70,
-        onTap: (index) {
-          setState(() => _currentPage = index);
-        },
-        items: [
-          Icon(
-            Icons.home,
-            color: _currentPage == 0
-                ? const Color.fromARGB(255, 75, 38, 174)
-                : Colors.white,
-          ),
-          Icon(
-            Icons.notifications,
-            color: _currentPage == 1
-                ? const Color.fromARGB(255, 75, 38, 174)
-                : Colors.white,
-          ),
-          Icon(
-            Icons.search,
-            color: _currentPage == 2
-                ? const Color.fromARGB(255, 75, 38, 174)
-                : Colors.white,
-          ),
-          Icon(
-            Icons.person,
-            color: _currentPage == 3
-                ? const Color.fromARGB(255, 75, 38, 174)
-                : Colors.white,
-          ),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: GridView.count(
+          crossAxisCount: 2,
+          crossAxisSpacing: 16,
+          mainAxisSpacing: 16,
+          children: [_buildGridButton(Icons.note, "Tarea 1", 0)],
+        ),
+      ),
+      /*drawer: Drawer(
+        child: NavigationDrawer(
+          children: [
+            UserAccountsDrawerHeader(
+              currentAccountPicture: CircleAvatar(
+                radius: 30,
+                backgroundImage: ValueListener.isLigth.value
+                    ? NetworkImage(
+                        "https://i.pinimg.com/1200x/97/e8/76/97e8761778312fb6c79c815491a6f411.jpg",
+                      )
+                    : null,
+                child: !ValueListener.isLigth.value
+                    ? Icon(Icons.person, size: 30, color: Colors.white)
+                    : null,
+              ),
+              accountName: Text(
+                "usuario",
+                style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0)),
+              ),
+              accountEmail: Text(
+                "@email.com",
+                style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0)),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text("tarea 1"),
+              onTap: () => Navigator.pushNamed(context, '/'),
+            ),
+          ],
+        ),
+      ),*/
+      bottomNavigationBar: BottomAppBar(
+        shadowColor: Colors.amber,
+        elevation: 5,
+        shape: const CircularNotchedRectangle(),
+        notchMargin: 6.0,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [// botones de navegación
+            _buildIcon(Icons.home_outlined, Icons.home, 0, "home"),
+            _buildIcon(
+              Icons.notifications_outlined,
+              Icons.notifications,
+              1,
+              "noti",
+            ),
+            _buildIcon(Icons.search_outlined, Icons.search, 2, "busqueda"),
+            _buildIcon(Icons.person_outline, Icons.person, 3, "perfil"),
+          ],
+        ),
       ),
     );
   }
