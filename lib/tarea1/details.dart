@@ -39,6 +39,13 @@ class _DetailsPageState extends State<DetailsPage> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color.fromARGB(255, 195, 136, 234), Color.fromARGB(255, 79, 23, 142)],
+            begin: Alignment(0.3, -1),
+            end: Alignment(-0.8, 1),
+          ),
+        ),
         child: Stack(
           children: [
             ListView(
@@ -67,13 +74,9 @@ class _DetailsPageState extends State<DetailsPage> {
                   children: [
                     SizedBox(width: 28),
                     Expanded(
-                      child: Container(
+                      child: SizedBox(
                         height: 54,
                         child: OutlinedButton(
-                          child: Text(
-                            'Favorito',
-                            style: TextStyle(color: Colors.white, fontSize: 12),
-                          ),
                           onPressed: () {},
                           style: OutlinedButton.styleFrom(
                             side: BorderSide(color: Colors.white, width: 1),
@@ -81,12 +84,16 @@ class _DetailsPageState extends State<DetailsPage> {
                               borderRadius: BorderRadius.circular(30.0),
                             ),
                           ),
+                          child: Text(
+                            'Favorito',
+                            style: TextStyle(color: Colors.white, fontSize: 12),
+                          ),
                         ),
                       ),
                     ),
                     SizedBox(width: 14),
                     Expanded(
-                      child: Container(
+                      child: SizedBox(
                         height: 56,
                         child: ElevatedButton(
                           onPressed: () {},
@@ -99,7 +106,7 @@ class _DetailsPageState extends State<DetailsPage> {
                             // min sizes for Material buttons
                             backgroundColor: Colors.transparent,
                             shadowColor: Colors.transparent,
-                          ).copyWith(elevation: MaterialStateProperty.all(0)),
+                          ).copyWith(elevation: WidgetStateProperty.all(0)),
                           child: Ink(
                             decoration: BoxDecoration(
                               gradient: LinearGradient(
@@ -154,7 +161,7 @@ class _DetailsPageState extends State<DetailsPage> {
                       ),
                     ),
                     Expanded(child: Container(height: appBarHeight)),
-                    Container(
+                    SizedBox(
                       width: appBarHeight,
                       height: appBarHeight,
                       child: Icon(Icons.menu, color: Colors.white),
@@ -164,13 +171,6 @@ class _DetailsPageState extends State<DetailsPage> {
               ),
             ),
           ],
-        ),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Color.fromARGB(255, 195, 136, 234), Color.fromARGB(255, 79, 23, 142)],
-            begin: Alignment(0.3, -1),
-            end: Alignment(-0.8, 1),
-          ),
         ),
       ),
     );
@@ -188,50 +188,48 @@ class _HeroDetailsImage extends StatelessWidget {
       padding: const EdgeInsets.only(top: 28.0, left: 28.0, right: 28.0),
       child: AspectRatio(
         aspectRatio: 1,
-        child: Container(
-          child: Stack(
-            children: [
-              Align(
-                child: Container(
-                  margin: EdgeInsets.only(left: 16, right: 16, top: 16),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.1),
-                    borderRadius: BorderRadius.all(Radius.circular(28)),
-                  ),
+        child: Stack(
+          children: [
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                margin: EdgeInsets.only(left: 16, right: 16, top: 16),
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.1),
+                  borderRadius: BorderRadius.all(Radius.circular(28)),
                 ),
-                alignment: Alignment.bottomCenter,
               ),
-              Align(
-                child: Container(
-                  margin: EdgeInsets.all(8.0),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.1),
-                    borderRadius: BorderRadius.all(Radius.circular(28)),
-                  ),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                margin: EdgeInsets.all(8.0),
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.1),
+                  borderRadius: BorderRadius.all(Radius.circular(28)),
                 ),
-                alignment: Alignment.bottomCenter,
               ),
-              Align(
-                child: Container(
-                  margin: EdgeInsets.only(bottom: 16),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.4),
-                    borderRadius: BorderRadius.all(Radius.circular(28)),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(8),
-                    child: Center(
-                      child: Hero(
-                        tag: hero.name,
-                        child: Image.asset(hero.image),
-                      ),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                margin: EdgeInsets.only(bottom: 16),
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.4),
+                  borderRadius: BorderRadius.all(Radius.circular(28)),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(8),
+                  child: Center(
+                    child: Hero(
+                      tag: hero.name,
+                      child: Image.asset(hero.image),
                     ),
                   ),
                 ),
-                alignment: Alignment.bottomCenter,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

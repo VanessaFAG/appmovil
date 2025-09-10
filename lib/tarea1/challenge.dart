@@ -31,6 +31,16 @@ class _ChallengeState extends State<Challenge> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color.fromARGB(255, 248, 147, 136),
+              Color.fromARGB(255, 67, 9, 9),
+            ],
+            begin: Alignment(0.3, -1),
+            end: Alignment(-0.8, 1),
+          ),
+        ),
         child: Stack(
           children: [
             ListView.builder(
@@ -78,16 +88,6 @@ class _ChallengeState extends State<Challenge> {
               ),
             )
           ],
-        ),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color.fromARGB(255, 248, 147, 136),
-              Color.fromARGB(255, 67, 9, 9),
-            ],
-            begin: Alignment(0.3, -1),
-            end: Alignment(-0.8, 1),
-          ),
         ),
       ),
     );
