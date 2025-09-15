@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movil2025/screens/home_screen.dart';
 import 'package:movil2025/screens/login_screen.dart';
+import 'package:movil2025/screens/signup_screen.dart';
 import 'package:movil2025/tarea1/challenge.dart';
 import 'package:movil2025/utils/theme_app.dart';
 import 'package:movil2025/utils/value_listener.dart';
@@ -27,7 +28,9 @@ class _MyAppState extends State<MyApp> {
         theme: value ? ThemeApp.ligthTheme() : ThemeApp.darkTheme(),
           routes: {//llamar a las pantallas
             "/home":(context) => HomeScreen(),
-            "/tarea1":(context) => Challenge()
+            "/tarea1":(context) => Challenge(),
+            "/registro":(context) => SignUpScreen(),
+            "/login":(context) => LoginScreen(),
           },
           title: 'Marerial',
           home: LoginScreen(),

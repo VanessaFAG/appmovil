@@ -19,22 +19,20 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     final txtUser = TextField(
       keyboardType: TextInputType.emailAddress,
       controller: conUser,
-      decoration: InputDecoration(hintText: 'usuario')
+      decoration: InputDecoration(hintText: 'usuario'),
     );
     final txtEmail = TextField(
       keyboardType: TextInputType.emailAddress,
       controller: conEmail,
-      decoration: InputDecoration(hintText: 'correo')
+      decoration: InputDecoration(hintText: 'correo'),
     );
     final txtPass = TextField(
       obscureText: true,
       controller: conPass,
-      decoration:
-      InputDecoration(hintText: 'contaseña')
+      decoration: InputDecoration(hintText: 'contaseña'),
     );
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -62,8 +60,9 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             Positioned(
-              bottom: 90,
+              bottom: 115,
               width: 320,
+              height: 300,
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 10.0),
                 width: MediaQuery.of(context).size.width,
@@ -74,37 +73,65 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 child: Column(
                   children: [
-                    SizedBox(height: 10,),
+                    SizedBox(height: 10),
                     txtUser,
                     txtEmail,
                     txtPass,
                     IconButton(
                       onPressed: () {
-                        if(!validar(conUser.text, conEmail.text, conPass.text)){
+                        if (!validar(
+                          conUser.text,
+                          conEmail.text,
+                          conPass.text,
+                        )) {
                           showDialog(
-                            context: context, 
-                            builder: (context){
+                            context: context,
+                            builder: (context) {
                               return AlertDialog(
                                 title: Text("Error"),
-                                content: Text("Usuario/Correo o Contraseña incorrectos, por favor vuelva a intentarlo"),
+                                content: Text(
+                                  "Usuario/Correo o Contraseña incorrectos, por favor vuelva a intentarlo",
+                                ),
                                 actions: [
                                   TextButton(
-                                    onPressed: (){
+                                    onPressed: () {
                                       Navigator.pop(context);
-                                    }, 
-                                    child: Text("Aceptar"))
+                                    },
+                                    child: Text("Aceptar"),
+                                  ),
                                 ],
                               );
-                            });
-                            return;
+                            },
+                          );
+                          return;
                         }
                         validando = true;
                         setState(() {});
                         Future.delayed(Duration(milliseconds: 3000)).then(
-                          (value) => Navigator.pushNamed(context, "/home"),);
-                        
+                          (value) => Navigator.pushNamed(context, "/home"),
+                        );
                       },
-                      icon: Icon(Icons.login, size: 45, color: Color.fromARGB(255, 10, 15, 60),),
+                      icon: Icon(
+                        Icons.login,
+                        size: 45,
+                        color: Color.fromARGB(255, 10, 15, 60),
+                      ),
+                    ),
+                    ElevatedButton(
+                      // crea el boton debajo del icono
+                      onPressed: () {
+                        Navigator.pushNamed(context, "/registro");
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color.fromARGB(255, 10, 15, 60),//color del fondo del boton
+                        foregroundColor: Colors.white,//color del texto del boton
+                        minimumSize: Size(150, 40),//ancho y alto del boton
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        elevation: 5,
+                      ),
+                      child: Text("Crea tu cuenta"),
                     ),
                   ],
                 ),
@@ -112,8 +139,10 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             Positioned(
               top: 300,
-              child: validando ? Lottie.asset("assets/loading.json",height: 200) : Container()
-              )
+              child: validando
+                  ? Lottie.asset("assets/loading.json", height: 200)
+                  : Container(),
+            ),
           ],
         ),
       ),
@@ -121,9 +150,9 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 }
 
-validar(String user, String email, String pass){
-  if(pass.isNotEmpty && (user.isNotEmpty || email.isNotEmpty)){
-//valida que la contraseña no este vacia y que el usuario o correo no esten vacios, el usuario por el momento puede poner uno de los 2
+validar(String user, String email, String pass) {
+  if (pass.isNotEmpty && (user.isNotEmpty || email.isNotEmpty)) {
+    //valida que la contraseña no este vacia y que el usuario o correo no esten vacios, el usuario por el momento puede poner uno de los 2
     return true;
   }
   return false;
