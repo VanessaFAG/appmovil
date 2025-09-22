@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:movil2025/models/movie_dao.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
@@ -30,7 +31,7 @@ class MoviesDatabase {
       )''';
       db.execute(sql);
   }
-  INSERT (String table, Map<String, dynamic> data) async   {
+  INSERT(String table, Map<String, dynamic> data) async{
     var con = await database;
     return con!.insert(table , data);
   }
@@ -42,5 +43,9 @@ class MoviesDatabase {
     var con = await database;
     return con!.delete(table, where: 'id_movie = ?', whereArgs: [id]);
   }
-  SELECT(){}
+  Future<List<MovieDao>> SELECT() async{
+    var con = await database;
+    final res = await con!.query("movies");
+    return res.map((movie) => MovieDao.fromMap(movie)).toList();
+  }
 }

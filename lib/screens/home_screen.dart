@@ -19,6 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
     switch (index) {
       case 0:
         Navigator.pushNamed(context, '/tarea1');
+        Navigator.pushNamed(context, '/foodie');
         break;
       case 1:
         Text("Realizar busqueda");
@@ -121,7 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisCount: 2,
           crossAxisSpacing: 16,
           mainAxisSpacing: 16,
-          children: [_buildGridButton(Icons.note, "Tarea 1", 0)],
+          children: [_buildGridButton(Icons.note, "Tarea 1", 0), _buildGridButton(Icons.fastfood, "Foodie", 1)],
         ),
       ),
       /*drawer: Drawer(

@@ -3,6 +3,7 @@ import 'package:movil2025/screens/home_screen.dart';
 import 'package:movil2025/screens/login_screen.dart';
 import 'package:movil2025/screens/signup_screen.dart';
 import 'package:movil2025/tarea1/challenge.dart';
+import 'package:movil2025/tarea3/foodie_main.dart';
 import 'package:movil2025/utils/theme_app.dart';
 import 'package:movil2025/utils/value_listener.dart';
 
@@ -31,6 +32,7 @@ class _MyAppState extends State<MyApp> {
             "/tarea1":(context) => Challenge(),
             "/registro":(context) => SignUpScreen(),
             "/login":(context) => LoginScreen(),
+            "/foodie":(context) => FoodieMain(),
           },
           title: 'Marerial',
           home: LoginScreen(),
