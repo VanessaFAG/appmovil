@@ -19,10 +19,9 @@ class _HomeScreenState extends State<HomeScreen> {
     switch (index) {
       case 0:
         Navigator.pushNamed(context, '/tarea1');
-        Navigator.pushNamed(context, '/foodie');
         break;
       case 1:
-        Text("Realizar busqueda");
+        Navigator.pushNamed(context, '/foodie');
         break;
       case 2:
         Text("Notificaciones");
@@ -125,38 +124,6 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [_buildGridButton(Icons.note, "Tarea 1", 0), _buildGridButton(Icons.fastfood, "Foodie", 1)],
         ),
       ),
-      /*drawer: Drawer(
-        child: NavigationDrawer(
-          children: [
-            UserAccountsDrawerHeader(
-              currentAccountPicture: CircleAvatar(
-                radius: 30,
-                backgroundImage: ValueListener.isLigth.value
-                    ? NetworkImage(
-                        "https://i.pinimg.com/1200x/97/e8/76/97e8761778312fb6c79c815491a6f411.jpg",
-                      )
-                    : null,
-                child: !ValueListener.isLigth.value
-                    ? Icon(Icons.person, size: 30, color: Colors.white)
-                    : null,
-              ),
-              accountName: Text(
-                "usuario",
-                style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0)),
-              ),
-              accountEmail: Text(
-                "@email.com",
-                style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0)),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.home),
-              title: Text("tarea 1"),
-              onTap: () => Navigator.pushNamed(context, '/'),
-            ),
-          ],
-        ),
-      ),*/
       bottomNavigationBar: BottomAppBar(
         shadowColor: Colors.amber,
         elevation: 5,
