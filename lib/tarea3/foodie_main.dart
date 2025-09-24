@@ -126,7 +126,8 @@ class _FoodieMainState extends State<FoodieMain> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start, // Alinea el texto a la izquierda
+          crossAxisAlignment:
+              CrossAxisAlignment.start, // Alinea el texto a la izquierda
           children: [
             Text(
               "Find your Best food here",
@@ -135,7 +136,9 @@ class _FoodieMainState extends State<FoodieMain> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 20),//Un espacio para que no se peguen los widgets
+            const SizedBox(
+              height: 20,
+            ), //Un espacio para que no se peguen los widgets
             TextField(
               controller: _searchController,
               decoration: InputDecoration(
@@ -153,37 +156,100 @@ class _FoodieMainState extends State<FoodieMain> {
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30),
-                  borderSide: BorderSide(color: const Color.fromARGB(255, 193, 116, 111)), // Borde rojo al seleccionar
+                  borderSide: BorderSide(
+                    color: const Color.fromARGB(255, 193, 116, 111),
+                  ), // Borde rojo al seleccionar
                 ),
               ),
             ),
             Row(
-             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20.0),
-                child: Text(
-                  "Popular Menu",
-                  style: TextStyle(
-                    color: const Color.fromARGB(255, 0, 0, 0),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20.0),
+                  child: Text(
+                    "Popular Menu",
+                    style: TextStyle(
+                      color: const Color.fromARGB(255, 0, 0, 0),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
                   ),
                 ),
-              ),
-              Spacer(), // Empuja el botón "See All" al extremo derecho
-              TextButton(
-                onPressed: () {},
-                child: Text(
-                  "See All",
-                  style: TextStyle(
-                    color: const Color.fromARGB(255, 193, 116, 111),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
-                  ),
+              ],
+            ),
+            TextButton(
+              onPressed: () {},
+              child: Text(
+                "See All",
+                style: TextStyle(
+                  color: const Color.fromARGB(255, 193, 116, 111),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
                 ),
               ),
-             ],
-            )
+            ),
+            Container(
+              height: 200,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  Container(
+                    width: 160,
+                    margin: const EdgeInsets.only(right: 16.0),
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 240, 240, 240),
+                      borderRadius: BorderRadius.circular(16.0),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ClipRRect(
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(16.0),
+                            topRight: Radius.circular(16.0),
+                          ),
+                          child: Image.network(
+                            'https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+                            height: 120,
+                            width: double.infinity,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Delicious Pizza',
+                                style: TextStyle(
+                                  color: const Color.fromARGB(255, 0, 0, 0),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(height: 4.0),
+                              Text(
+                                '\$12.99',
+                                style: TextStyle(
+                                  color: const Color.fromARGB(
+                                    255,
+                                    193,
+                                    116,
+                                    111,
+                                  ),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  
+                ],
+              ),
+            ),
           ],
         ),
       ),
