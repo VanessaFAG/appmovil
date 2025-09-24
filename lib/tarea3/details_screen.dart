@@ -17,6 +17,7 @@ class DetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+      
       appBar: AppBar(
         title: Text(title, style: const TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
@@ -27,11 +28,11 @@ class DetailsScreen extends StatelessWidget {
           child: DiamondButton(
                 icon: Icons.arrow_back,
                 size: 40,
-                color: const Color.fromARGB(141, 75, 74, 74),
+                color: const Color.fromARGB(87, 75, 74, 74),
                 iconColor: const Color.fromARGB(255, 0, 0, 0),
                 onPressed: () {
-                  Navigator.pushNamed(context, "/foodie");
-                }, // Acción opcional
+                  Navigator.pop(context);
+                },
               ),
         ),
       ),

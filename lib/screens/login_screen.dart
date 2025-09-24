@@ -123,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Navigator.pushNamed(context, "/registro");
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 10, 15, 60),//color del fondo del boton
+                        backgroundColor: Color.fromARGB(123, 10, 15, 60),//color del fondo del boton
                         foregroundColor: Colors.white,//color del texto del boton
                         minimumSize: Size(150, 40),//ancho y alto del boton
                         shape: RoundedRectangleBorder(
