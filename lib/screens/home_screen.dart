@@ -124,6 +124,29 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [_buildGridButton(Icons.note, "Tarea 1", 0), _buildGridButton(Icons.fastfood, "Foodie", 1)],
         ),
       ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            UserAccountsDrawerHeader(
+              accountEmail: Text("usernomas@gmail.com"),
+              accountName: Text("nomas sjsjsjs un saludo"),
+              currentAccountPicture: 
+              CircleAvatar(
+                backgroundImage: NetworkImage("https://giffiles.alphacoders.com/219/219969.gif"),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.movie),
+              title: Text('Lista de peliculas'),
+              subtitle: Text('Base de Datos'),
+              trailing: Icon(Icons.chevron_right),
+              onTap: (){
+                Navigator.pushNamed(context, "/listBD");
+              },
+            )
+          ],
+        ),
+      ),
       bottomNavigationBar: BottomAppBar(
         shadowColor: Colors.amber,
         elevation: 5,

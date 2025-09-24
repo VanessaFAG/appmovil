@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movil2025/screens/home_screen.dart';
+import 'package:movil2025/screens/list_movies.dart';
 import 'package:movil2025/screens/login_screen.dart';
 import 'package:movil2025/screens/signup_screen.dart';
 import 'package:movil2025/tarea1/challenge.dart';
@@ -33,6 +34,7 @@ class _MyAppState extends State<MyApp> {
             "/registro":(context) => SignUpScreen(),
             "/login":(context) => LoginScreen(),
             "/foodie":(context) => FoodieMain(),
+            "/listDB": (context) => ListMovies(),
           },
           title: 'Marerial',
           home: LoginScreen(),
