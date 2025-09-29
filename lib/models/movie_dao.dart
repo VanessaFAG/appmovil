@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 class MovieDao {
   int? id_movie;
   String? movie;
@@ -6,7 +8,8 @@ class MovieDao {
 
   MovieDao({this.id_movie, this.movie, this.tiempo, this.date_reseale});
 
-  factory MovieDao.fromMap(Map<String, dynamic> mapa){//factory es un constructor que regresa una instancia de la clase, constructor nombrado
+  factory MovieDao.fromMap(Map<String, dynamic> mapa){
+    //factory es un constructor que regresa una instancia de la clase, constructor nombrado
     return MovieDao(
       id_movie: mapa['id_movie'],
       movie: mapa['movie'],
