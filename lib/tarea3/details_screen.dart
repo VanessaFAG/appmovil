@@ -18,11 +18,26 @@ class DetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+        elevation: 0,
+        leading: DiamondButton(
+          icon: Icons.arrow_back,
+          size: 50,
+          color: const Color.fromARGB(255, 255, 255, 255),
+          iconColor: const Color.fromARGB(255, 0, 0, 0),
+          onPressed: () {
+            Navigator.pop(context);
+          }, // Acción opcional
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            ClipRRect(// imagen
+            ClipRRect(
+              // imagen
               borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(24),
                 bottomRight: Radius.circular(24),
@@ -43,18 +58,18 @@ class DetailsScreen extends StatelessWidget {
               children: [
                 DiamondButton(
                   icon: Icons.remove,
-                  size: 40,
+                  size: 30,
                   color: Colors.red,
                   iconColor: Colors.white,
                   onPressed: () {},
                 ),
                 const Text(
-                  "1",
+                  "  1  ",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 DiamondButton(
                   icon: Icons.add,
-                  size: 40,
+                  size: 30,
                   color: Colors.red,
                   iconColor: Colors.white,
                   onPressed: () {},
@@ -64,7 +79,8 @@ class DetailsScreen extends StatelessWidget {
 
             const SizedBox(height: 20),
 
-            Container(//informacion de la comida, fijo todos diran lo mesmo
+            Container(
+              //informacion de la comida, fijo todos diran lo mesmo
               margin: const EdgeInsets.symmetric(horizontal: 16),
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
@@ -87,7 +103,8 @@ class DetailsScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
 
-                  Row(//titulo y las estrellas
+                  Row(
+                    //titulo y las estrellas
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
@@ -143,7 +160,8 @@ class DetailsScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
 
-                  Row( //precio y el carrito, su boton pues
+                  Row(
+                    //precio y el carrito, su boton pues
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Column(
@@ -166,9 +184,10 @@ class DetailsScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      DiamondButton(//carrito con la forma del rombo arcaico
+                      DiamondButton(
+                        //carrito con la forma del rombo arcaico
                         icon: Icons.shopping_cart,
-                        size: 70,
+                        size: 50,
                         color: Colors.red,
                         iconColor: Colors.white,
                         onPressed: () {},
