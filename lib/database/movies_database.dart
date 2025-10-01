@@ -27,7 +27,7 @@ class MoviesDatabase {
       id_movie INTEGER PRIMARY KEY AUTOINCREMENT,
       movie varchar(150),
       tiempo char(4),
-      date_reseale char(10)
+      date_release char(10)
       )''';
       db.execute(sql);
   }

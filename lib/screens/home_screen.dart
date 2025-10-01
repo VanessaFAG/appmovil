@@ -141,14 +141,13 @@ class _HomeScreenState extends State<HomeScreen> {
               subtitle: Text('Base de Datos'),
               trailing: Icon(Icons.chevron_right),
               onTap: (){
-                Navigator.pushNamed(context, "/listBD");
+                Navigator.pushNamed(context, "/lista");
               },
             )
           ],
         ),
       ),
       bottomNavigationBar: BottomAppBar(
-        shadowColor: Colors.amber,
         elevation: 5,
         shape: const CircularNotchedRectangle(),
         notchMargin: 6.0,
