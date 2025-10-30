@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "557980351039",
+    "project_id": "mopelis-ca195",
+    "storage_bucket": "mopelis-ca195.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:557980351039:android:12eb84546b4d5007fb568a",
+        "android_client_info": {
+          "package_name": "com.example.movil2025"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUgdql7Jt9XKJoC_B9VjU22LufVV8Oc5Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
